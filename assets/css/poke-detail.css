@@ -62,7 +62,7 @@
     background-size: cover;
 }
 
-#pokeInfo .pokeInfoStats {
+#pokeInfo .pokeInfoStatus {
     display: grid;
     grid-template-columns: 1fr 1fr;
     list-style: none;

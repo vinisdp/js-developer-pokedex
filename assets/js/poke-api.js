@@ -7,8 +7,6 @@ function convertPokeApiDetailToPokemon(pokeDetail) {
     pokemon.id = pokeDetail.id
     pokemon.photo = pokeDetail.sprites.other["official-artwork"].front_default
 
-    pokemon.height = pokeDetail.height;
-    pokemon.weight = pokeDetail.weight;
 
     const types = pokeDetail.types.map((typeSlot) => typeSlot.type.name)
     const [type] = types
@@ -18,8 +16,6 @@ function convertPokeApiDetailToPokemon(pokeDetail) {
 
     const stats = pokeDetail.stats.map((statSlot) => `${statSlot.stat.name.replace('-',' ')}: ${statSlot.base_stat}`)
 
-    stats.push(`Height: ${pokeDetail.height}`)
-    stats.push(`Weight: ${pokeDetail.weight}`)
 
     pokemon.stats = stats;
 
