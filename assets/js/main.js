@@ -1,4 +1,3 @@
-const pokemonList = document.getElementById('pokemonList');
 const loadMoreButton = document.getElementById('loadMoreButton');
 const closeButton = document.getElementById('closeButton');
 const divStatus= document.getElementById("div-diagonal");
@@ -9,14 +8,23 @@ const pokeTypes = document.getElementById("pokeTypes");
 const pokeImg = document.getElementById("pokeImg");
 const pokeStatus = document.getElementById("pokeStatus");
 const overlay = document.getElementById("overlay");
-const limit = 5;
+const pokemonOl = document.getElementById('pokemonList');
+VanillaTilt.init(pokeInfo,{
+    max: 25,
+    speed:400,
+    glare: true,
+    "max-glare": .25,
+}
+ );
+
+const limit = 100;
 let offset = 0;
 let pokeType;
 
 const maxRecords = 891;
 
 function convertPokemonToHTML(pokemon) {
-    return `<li class="pokemon ${pokemon.type}" onclick="getPokemonInfo(${pokemon.id})">
+    return `<li class="pokemon ${pokemon.type}" id="pokemon" onclick="getPokemon(${pokemon.id})">
                 <span class="number">#${pokemon.id}</span>
                 <span class="name">${pokemon.name}</span>
 
@@ -27,20 +35,17 @@ function convertPokemonToHTML(pokemon) {
                     <img src=${pokemon.photo}
                         alt=${pokemon.name}>
                 </div>
-
             </li>`
 }
-
-
-const pokemonOl = document.getElementById('pokemonList');
 
 function loadPokemonItens(offset, limit) {
     pokeApi.getPokemons(offset, limit)
         .then((pokemons = []) => {
-            pokemonList.innerHTML += pokemons.map(convertPokemonToHTML).join('')
+            pokemonOl.innerHTML += pokemons.map(convertPokemonToHTML).join('')
         })
 }
 
+loadPokemonItens(offset,limit);
 
 loadMoreButton.addEventListener('click', () => {
     offset += limit;
@@ -48,8 +53,8 @@ loadMoreButton.addEventListener('click', () => {
     const qtdRecordNextPage = offset + limit;
 
     if (qtdRecordNextPage >= maxRecords) {
-        const newLimit =  maxRecords - offset
-        loadPokemonItens(offset, newLimit)
+        const newLimit =  maxRecords - offset;
+        loadPokemonItens(offset, newLimit);
         loadMoreButton.parentElement.removeChild(loadMoreButton);
     } else {
         loadPokemonItens(offset, limit);
@@ -61,14 +66,14 @@ pokeApi.getPokemons()
     })
     .catch((err) => console.error(err));
 
-    function showPokeInfo() {
+    function showPokemonCard() {
     pokeInfo.style.opacity = 1;
     pokeInfo.style.pointerEvents = 'auto';
     overlay.style.opacity = 1;
     overlay.style.pointerEvents = 'auto';
 }
 
-function hidePokeInfo(){
+function hidePokemonCard(){
     pokeInfo.style.opacity = 0;
     pokeInfo.style.pointerEvents = 'none';
     overlay.style.opacity = 0;
@@ -81,15 +86,15 @@ function hidePokeInfo(){
 
 function closeOverlay() {
     if (overlay.style.opacity === '1') {
-        hidePokeInfo();
+        hidePokemonCard();
     }
 }
 
 closeButton.addEventListener('click', () => {
-    hidePokeInfo();
+    hidePokemonCard();
 })
 
-function pokeInfoUpdate(pokemon) {
+function pokeUpdate(pokemon) {
     
     pokemon = pokemon[0];
 
@@ -121,8 +126,8 @@ function pokeInfoUpdate(pokemon) {
 
 }
 
-function getPokemonInfo(id){
+function getPokemon(id){
     pokeApi.getPokemons(id-1, 1)
-    .then(pokeInfoUpdate)
-    .then(showPokeInfo);
+    .then(pokeUpdate)
+    .then(showPokemonCard);
 }

@@ -9,12 +9,15 @@
     background: #FFFFFF url("/assets/imagens/images.jpg") no-repeat center;
     background-size: cover;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     left: 0;
     right: 0;
     pointer-events: none;
     transition: all 0.3s ease;
     text-transform: capitalize;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 #pokeInfo .active {
