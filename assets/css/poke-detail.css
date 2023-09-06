@@ -1,0 +1,103 @@
+#pokeInfo {
+    text-align: center;
+    max-width: 350px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 1rem;
+    opacity: 0;
+    background: #FFFFFF url("/assets/imagens/images.jpg") no-repeat center;
+    background-size: cover;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    text-transform: capitalize;
+}
+
+#pokeInfo .active {
+    opacity: 1;
+}
+
+#pokeInfo .pokeInfoTypes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;;
+    list-style: none;
+    padding: 0.5rem;
+}
+
+#pokeInfo .type {
+    width: 75px;
+    color: #FFF;
+    margin: .25rem 0.25rem;
+    border-radius: 1rem;
+    filter: brightness(1.1);
+    text-align: center;
+    box-shadow: 0 5px 15px rgb(0, 0, 0);
+    text-transform: capitalize;
+    padding: 0.5rem;
+}
+#pokeInfo .pokeInfoName{
+    color: #FFFFFF;
+    box-shadow: 0 5px 15px rgb(0, 0, 0);
+    border-radius: 1rem;
+    margin: 0.5rem 0.5rem;
+}
+#pokeInfo .pokeInfoNumber{
+    color: #FFFFFF;
+    box-shadow: 0 5px 15px rgb(0, 0, 0);
+    border-radius: 1rem;
+    margin: 0.5rem 0.5rem;
+}
+#pokeInfo img {
+    width: 200px;
+    height: auto;
+    box-shadow: 0 5px 15px rgb(0, 0, 0);
+    border-radius:1rem;
+    background: #FFFFFF url("/assets/imagens/floresta.jpg") no-repeat center;
+    background-size: cover;
+}
+
+#pokeInfo .pokeInfoStats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    list-style: none;
+    color: white;
+    box-shadow: 0 5px 15px rgb(0, 0, 0);
+    border-radius: 1rem;
+    padding: 0.25rem 0.5rem;
+    margin: 0 0.5rem 0.5rem;
+}
+#div-diagonal {
+    color: white;
+    box-shadow: 0 5px 15px rgb(0, 0, 0);
+    border-radius: 1rem;
+    margin: 0 0.5rem 0.5rem;
+}
+
+.overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    pointer-events: none;
+    top: 0;
+  }
+
+#closeButton{
+    position: absolute;
+    right: 0;
+    opacity: 0.8;
+    border: none;
+    color: #000;
+    font-size: 1rem;
+    border-radius: 1rem;
+}
+#closeButton:hover{
+    cursor:pointer;
+}
