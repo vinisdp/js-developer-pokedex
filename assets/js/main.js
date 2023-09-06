@@ -13,7 +13,7 @@ const limit = 5;
 let offset = 0;
 let pokeType;
 
-const maxRecords = 151
+const maxRecords = 891;
 
 function convertPokemonToHTML(pokemon) {
     return `<li class="pokemon ${pokemon.type}" onclick="getPokemonInfo(${pokemon.id})">
@@ -66,7 +66,6 @@ pokeApi.getPokemons()
     pokeInfo.style.pointerEvents = 'auto';
     overlay.style.opacity = 1;
     overlay.style.pointerEvents = 'auto';
-    // document.body.style.overflow = 'hidden'
 }
 
 function hidePokeInfo(){
@@ -78,7 +77,6 @@ function hidePokeInfo(){
     pokeNumber.classList.remove(pokeType);
     pokeStatus.classList.remove(pokeType);
     divStatus.classList.remove(pokeType);
-    // document.body.removeAttribute('style');
 }
 
 function closeOverlay() {
